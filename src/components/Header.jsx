@@ -33,7 +33,7 @@ const Header = () => {
             <span className="header__main__nav__options__bottom">& Orders</span>
           </Link>
 
-          <Link to="/cart" className="header__main__nav__options flex-row">
+          <Link to="/cart" className="header__main__nav__options header__main__nav__cart">
             <span className="header__main__nav__cart__count">0</span>
             <span className="header__main__nav__cart__icon" />
             <span className="header__main__nav__cart__text">Cart</span>
@@ -49,9 +49,41 @@ const Header = () => {
 
         <div className="header__sub__items">
           <Link to="/">
-            <span>Test</span>
+            <span>Fresh</span>
           </Link>
         </div>
+
+        <div className="header__sub__items">
+          <Link to="/">
+            <span>Best Sellers</span>
+          </Link>
+        </div>
+
+        <div className="header__sub__items">
+          <Link to="/">
+            <span>Fashion</span>
+          </Link>
+        </div>
+
+        <div className="header__sub__items">
+          <Link to="/">
+            <span>Mobile</span>
+          </Link>
+        </div>
+
+        <div className="header__sub__items">
+          <Link to="/">
+            <span>Amazon Pay</span>
+          </Link>
+        </div>
+
+        <div className="header__sub__items">
+          <Link to="/">
+            <span>Kindle eBooks</span>
+          </Link>
+        </div>
+
+        <div className="header__sub__ads" />
       </nav>
     </div>
   );
