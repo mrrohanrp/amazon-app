@@ -29,6 +29,23 @@ const Header = () => {
           </div>
           <div className="header__main__search">
             <div className="header__main__search__bar">
+              <select className="header__main__search__bar__drop">
+                <option value="search_all-categories">All</option>
+                <option value="search_todays-deals">Deals</option>
+                <option value="search_fashion">Fashion</option>
+                <option value="search_pantry">Pantry</option>
+                <option value="search_appliances">Appliances</option>
+                <option value="search_mobile-apps">Apps</option>
+                <option value="search_baby">Baby</option>
+                <option value="search_beauty">Beauty</option>
+                <option value="search_books">Books</option>
+                <option value="search_automotive">Motorbikes</option>
+                <option value="search_apparel">Clothing</option>
+                <option value="search_collectibles">Collectibles</option>
+                <option value="search_computers">Computers</option>
+                <option value="search_electronics">Electronics</option>
+                <option value="search_furnitures">Furnitures</option>
+              </select>
               <input type="text" className="header__main__search__bar__input" />
               <span className="header__main__search__bar__icon"></span>
             </div>
