@@ -1,4 +1,8 @@
 @import './constants/colors';
+@import './constants/imgs';
+@import 'src/components/Header';
+
+$font-size: 14px;
 
 body {
   margin: 0;
@@ -16,7 +20,7 @@ code {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 14px;
+  font-size: $font-size;
   line-height: 20px;
   font-family: Arial, sans-serif;
 }
