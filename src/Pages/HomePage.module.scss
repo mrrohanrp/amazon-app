@@ -1,3 +1,5 @@
-.temp {
-  background-color: #fff;
+$class-name: 'home';
+
+.#{$class-name} {
+  position: relative;
 }

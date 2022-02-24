@@ -1,0 +1,93 @@
+$class-name: 'carousel';
+$img-carousel-sprite: 'src/assets/img/carousel-sprite.png';
+
+@mixin corousel-control {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 256px;
+  width: 6%;
+  color: #fff;
+  z-index: 10;
+  background: 0 0;
+  border: 0;
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:focus {
+    box-shadow: inset 0 0 0 2px #fff, inset 0 0 0 4px #008296;
+    border-radius: 3px;
+  }
+
+  &__btn {
+    background-image: url($img-carousel-sprite);
+    background-size: 68px 52px;
+    width: 34px;
+    height: 52px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 768px) {
+    transform: translate(0, -50px);
+  }
+}
+
+.#{$class-name} {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+
+  &__slider {
+    white-space: nowrap;
+    transition: ease 1000ms;
+    display: block;
+  }
+
+  &__slide {
+    width: 100%;
+    display: inline-block;
+    min-width: 100%;
+
+    &__img {
+      display: block;
+      width: 100%;
+      min-height: 100%;
+      mask-image: linear-gradient(to bottom, rgb(0 0 0 / 100%), rgb(0 0 0 / 0%));
+      object-fit: contain;
+      cursor: pointer;
+    }
+
+    &__active {
+      display: inline-block;
+    }
+  }
+
+  &__prev {
+    left: 0;
+    @include corousel-control;
+
+    &__btn {
+      background-position: 3px 0;
+    }
+  }
+
+  &__next {
+    right: 0;
+    @include corousel-control;
+
+    &__btn {
+      background-position: 30px 0;
+    }
+  }
+}
