@@ -1,5 +1,29 @@
+@import 'src/styles/constants/colors';
+
 $class-name: 'home';
 
 .#{$class-name} {
   position: relative;
+  background-color: $bg-body;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    margin-top: -270px;
+
+    @media (max-width: 1028px) {
+      margin-top: -200px;
+    }
+
+    @media (max-width: 768px) {
+      margin-top: -50px;
+    }
+  }
+
+  &__products {
+    max-width: 1500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
 }

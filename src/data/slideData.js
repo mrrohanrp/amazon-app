@@ -1,4 +1,4 @@
-export const slidesData = [
+export const slideData = [
   {
     img: '../assets/img/carousel/6163BeCPCAL._SX3740_.jpg'
   },

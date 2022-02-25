@@ -1,0 +1,127 @@
+@import 'src/styles/constants/colors';
+@import 'src/styles/constants/imgs';
+
+$class-name: 'product';
+
+.#{$class-name} {
+  position: relative;
+  width: 300px;
+  min-height: 420px;
+  max-height: 450px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 15px 10px;
+  background-color: #fff;
+  z-index: 10;
+  text-align: center;
+  user-select: none;
+
+  @media (max-width: 768px) {
+    width: 240px;
+  }
+
+  &__img {
+    margin-top: auto;
+    text-align: center;
+  }
+
+  & img {
+    object-fit: contain;
+    margin: 10px 0;
+    width: 170px;
+    height: 200px;
+  }
+
+  &__title {
+    color: black;
+    font-size: 1.15rem;
+    line-height: 1.8rem;
+    max-height: 7.14rem;
+    min-height: 4.28rem;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover {
+      color: $text-hover;
+    }
+  }
+
+  &__rating {
+    margin: 5px 0;
+    text-align: center;
+
+    &__stars {
+      display: inline-block;
+      min-height: 14px;
+      min-width: 80px;
+      background-image: url($img-star-sprite);
+      background-size: 400px 900px;
+      background-position: -84px 531px;
+    }
+
+    &__popover {
+      display: inline-block;
+      min-height: 14px;
+      min-width: 14px;
+      background-image: url($img-star-sprite);
+      background-size: 400px 900px;
+      background-position: -105px 610px;
+    }
+
+    &__count {
+      color: $text-link;
+      margin-left: 3px;
+
+      &:hover {
+        color: $text-hover;
+      }
+    }
+  }
+
+  &__price {
+    margin: 5px 0;
+
+    &__sell {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: $text-price;
+
+      &__currency {
+        vertical-align: top;
+      }
+
+      &__value {
+        font-size: 1.5rem;
+        font-weight: 400;
+      }
+    }
+
+    &__mrp {
+      display: inline-block;
+      margin: 0 10px;
+      font-size: 0.9rem;
+      text-decoration: line-through;
+      color: #565959;
+    }
+  }
+
+  &__btn {
+    background: linear-gradient(180deg, #f3d286 0%, #f0c14d 100%);
+    border-color: #a88734 #9c7e31 #846a29;
+    outline: none;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none !important;
+    vertical-align: middle;
+
+    &:hover {
+      background: linear-gradient(180deg, #f0c14be0 0%, #f0c14b 100%);
+    }
+  }
+}
