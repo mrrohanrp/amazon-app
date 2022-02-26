@@ -2,8 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import classNames from 'classnames';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
+  const cartCount = useSelector((state) => state.cart.cartCount);
+
   const [headerHeight, setHeaderHeight] = useState('auto');
 
   const headerRef = useRef();
@@ -60,7 +63,7 @@ const Header = () => {
               <span className="header__main__nav__options__bottom">& Orders</span>
             </Link>
             <Link to="/cart" className="header__main__nav__options header__main__nav__cart">
-              <span className="header__main__nav__cart__count">10</span>
+              <span className="header__main__nav__cart__count">{cartCount}</span>
               <span className="header__main__nav__cart__icon" />
               <span className="header__main__nav__cart__text">Cart</span>
             </Link>

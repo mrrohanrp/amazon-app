@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { ADDTOCART } from '../store/cartSlice';
 
 import styles from './Product.module.scss';
 
@@ -39,8 +42,11 @@ const Product = ({ id, title, price, mrp, image, rating, ratingCount }) => {
   const discount = mrp - price;
   const percentage = ((discount / mrp) * 100).toFixed(2);
 
-  /* TODO: */
-  const handleAddToBasket = () => {};
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (id) => {
+    return dispatch(ADDTOCART(id));
+  };
 
   return (
     <div className={styles.product} id={id}>
@@ -71,7 +77,7 @@ const Product = ({ id, title, price, mrp, image, rating, ratingCount }) => {
         </div>
       </div>
 
-      <button className={styles.product__btn} onClick={handleAddToBasket}>
+      <button className={styles.product__btn} onClick={(id) => handleAddToCart(id)}>
         Add to Cart
       </button>
     </div>
