@@ -1,0 +1,88 @@
+@import 'src/styles/constants/colors';
+@import 'src/styles/mixins/button';
+
+$class-name: 'item';
+
+.#{$class-name} {
+  display: flex;
+  margin: 10px 0;
+  gap: 10px;
+
+  &__content {
+    display: flex;
+    width: 80%;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    &__image img {
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+    }
+
+    &__desc {
+      min-width: 250px;
+      text-align: start;
+      display: flex;
+      flex-direction: column;
+
+      &__title {
+        overflow: hidden;
+        font-size: 1.3rem;
+        line-height: 1.7rem;
+        color: black !important;
+        display: inline-block;
+        max-height: 9rem;
+        width: 100%;
+      }
+
+      & p {
+        margin: 5px 0;
+        color: green;
+        font-size: 0.8rem;
+      }
+
+      &__qty {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      &__add,
+      &__subtract {
+        @include button;
+
+        max-width: 2rem;
+        margin: 5px;
+        padding: 0 1px;
+        outline: none;
+      }
+
+      &__delete {
+        margin: 5px 7px;
+        color: $text-link;
+        cursor: pointer;
+        font-size: 0.9rem;
+      }
+
+      &__delete:hover {
+        color: $text-hover;
+      }
+    }
+  }
+
+  &__price {
+    width: 20%;
+    text-align: right;
+    font-size: 1.3rem;
+    font-weight: 700;
+    white-space: nowrap;
+
+    &__currency {
+      font-size: 0.7rem;
+      vertical-align: top;
+    }
+  }
+}

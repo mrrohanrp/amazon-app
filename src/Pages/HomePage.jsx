@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header, Carousel, Product } from 'src/components';
+import { Carousel, Product } from 'src/components';
 import { slideData, productData } from 'src/data';
 
 import styles from './HomePage.module.scss';
@@ -8,7 +8,6 @@ import styles from './HomePage.module.scss';
 const HomePage = () => {
   return (
     <div className={styles.home}>
-      <Header />
       <Carousel slides={slideData} />
 
       <div className={styles.home__container}>

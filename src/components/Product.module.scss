@@ -1,5 +1,6 @@
 @import 'src/styles/constants/colors';
 @import 'src/styles/constants/imgs';
+@import 'src/styles/mixins/button';
 
 $class-name: 'product';
 
@@ -108,20 +109,6 @@ $class-name: 'product';
   }
 
   &__btn {
-    background: linear-gradient(180deg, #f3d286 0%, #f0c14d 100%);
-    border-color: #a88734 #9c7e31 #846a29;
-    outline: none;
-    margin: 5px;
-    padding: 5px;
-    border: 1px solid;
-    border-radius: 3px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none !important;
-    vertical-align: middle;
-
-    &:hover {
-      background: linear-gradient(180deg, #f0c14be0 0%, #f0c14b 100%);
-    }
+    @include button;
   }
 }
