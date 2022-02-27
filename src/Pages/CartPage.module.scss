@@ -67,7 +67,7 @@ $class-name: 'cart';
     }
 
     &__btn {
-      @include button;
+      @include button('new');
     }
   }
 
