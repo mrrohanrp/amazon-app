@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router';
-import { HomePage, CartPage, LoginPage, NoMatchPage } from 'src/pages';
+import { HomePage, CartPage, LoginPage, SignUpPage, NoMatchPage } from 'src/pages';
 import { Header } from './components';
 
 export const App = () => (
@@ -25,6 +25,7 @@ export const App = () => (
         }
       />
       <Route path="login" element={<LoginPage />} />
+      <Route path="signup" element={<SignUpPage />} />
     </Route>
     <Route path="*" element={<NoMatchPage />} />
   </Routes>

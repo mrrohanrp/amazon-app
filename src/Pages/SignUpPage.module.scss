@@ -2,8 +2,8 @@
 @import 'src/styles/constants/imgs';
 @import 'src/styles/mixins/button';
 
-$class-name: 'login';
-$login-width: 25rem;
+$class-name: 'signup';
+$signup-width: 25rem;
 
 .#{$class-name} {
   position: relative;
@@ -42,14 +42,14 @@ $login-width: 25rem;
     }
   }
 
-  &__login {
+  &__signup {
     background-color: #fff;
     padding: 2rem;
     padding-bottom: 1rem;
     display: flex;
     flex-direction: column;
     text-align: left;
-    width: $login-width;
+    width: $signup-width;
     border: 0.1px solid rgb(182 180 180);
     border-radius: 5px;
 
@@ -100,6 +100,25 @@ $login-width: 25rem;
       background: url($img-login-sprite) -366px -86px;
       background-size: 400px 750px;
     }
+
+    &__password {
+      margin-bottom: 0 !important;
+    }
+
+    &__password + span {
+      margin-top: 0;
+      font-weight: lighter;
+      font-size: 0.86rem;
+    }
+
+    &__password__icon {
+      margin-top: 0 !important;
+      display: inline-block;
+      min-width: 14px;
+      height: 12px;
+      background: url($img-login-sprite) -166px -130px;
+      background-size: 400px 750px;
+    }
   }
 
   & a {
@@ -110,10 +129,9 @@ $login-width: 25rem;
 
   &__break {
     position: relative;
-    display: flex;
-    justify-content: center;
-    margin: 2rem 0 0;
+    margin: 1rem 0;
     color: #767676;
+    background: linear-gradient(to bottom, rgb(0 0 0 / 14%), rgb(0 0 0 / 3%) 3px, transparent);
 
     & p {
       font-size: 0.86rem;
@@ -126,11 +144,7 @@ $login-width: 25rem;
       content: '';
       display: block;
       height: 1px;
-      width: $login-width;
-      background: linear-gradient(to right, $bg-body, #767676, $bg-body);
-      position: absolute;
-      top: 50%;
-      margin-top: -1px;
+      background: linear-gradient(to right, #fff, rgb(255 255 255 / 0%), #fff);
       z-index: 1;
     }
   }
@@ -139,7 +153,7 @@ $login-width: 25rem;
     @include button('grey');
 
     height: 2.2rem;
-    width: $login-width;
+    width: $signup-width;
   }
 
   &__footer {

@@ -16,13 +16,13 @@ const LoginPage = () => {
       <div className={styles.login__login}>
         <h2>Sign-In</h2>
 
-        <span>Email</span>
-        <input type="email" name="enter__email" className={styles.login__login__email} />
-        <span>Password</span>
-        <input type="password" name="enter__email" className={styles.login__login__password} />
-        <button type="button">Continue</button>
+        <label htmlFor="email">Email</label>
+        <input type="email" name="email" id="email" required className={styles.login__login__email} />
+        <label htmlFor="password">Password</label>
+        <input type="password" name="password" id="password" required className={styles.login__login__password} />
+        <button type="submit">Continue</button>
         <p>
-          By continuing, you agree to Amozon&apos;s <Link to="/">Conditions of Use </Link> and{' '}
+          By continuing, you agree to Amazon&apos;s <Link to="/">Conditions of Use </Link> and{' '}
           <Link to="/">Privacy Notice</Link>.
         </p>
 
