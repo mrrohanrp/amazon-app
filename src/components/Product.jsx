@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { ADDTOCART } from '../store/cartSlice';
+import { ADDTOCART, FILLCART } from '../store/cartSlice';
 
 import styles from './Product.module.scss';
 
@@ -44,8 +44,16 @@ const Product = ({ id, title, price, mrp, image, rating, ratingCount }) => {
 
   const dispatch = useDispatch();
 
-  const handleAddToCart = (id) => {
-    return dispatch(ADDTOCART(id));
+  const handleAddToCart = () => {
+    dispatch(ADDTOCART(id));
+    dispatch(
+      FILLCART({
+        id,
+        title,
+        image,
+        price
+      })
+    );
   };
 
   return (
@@ -77,7 +85,7 @@ const Product = ({ id, title, price, mrp, image, rating, ratingCount }) => {
         </div>
       </div>
 
-      <button className={styles.product__btn} onClick={(id) => handleAddToCart(id)}>
+      <button className={styles.product__btn} onClick={() => handleAddToCart()}>
         Add to Cart
       </button>
     </div>

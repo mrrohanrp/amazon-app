@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import { ADDQUANTITY, DELETEFROMCART, SUBTRACTQUANTITY } from '../store/cartSlice';
 
 import styles from './CartItem.module.scss';
 
@@ -18,6 +21,20 @@ const propTypes = {
 };
 
 const CartItem = ({ id, title, price, image, quantity }) => {
+  const dispatch = useDispatch();
+
+  const handleAddToQuantity = () => {
+    dispatch(ADDQUANTITY(id));
+  };
+
+  const handleSubtractQuantity = () => {
+    dispatch(SUBTRACTQUANTITY(id));
+  };
+
+  const handleDeleteFromCart = () => {
+    dispatch(DELETEFROMCART(id));
+  };
+
   return (
     <>
       <div className={styles.item}>
@@ -33,10 +50,17 @@ const CartItem = ({ id, title, price, image, quantity }) => {
             <p>In stock</p>
             <div className={styles.item__content__desc__qty}>
               Qty:
-              <button className={styles.item__content__desc__subtract}>-</button>
+              <button className={styles.item__content__desc__subtract} onClick={() => handleSubtractQuantity()}>
+                -
+              </button>
               <div>{quantity}</div>
-              <button className={styles.item__content__desc__add}>+</button> |
-              <span className={styles.item__content__desc__delete}>Delete</span>
+              <button className={styles.item__content__desc__add} onClick={() => handleAddToQuantity()}>
+                +
+              </button>{' '}
+              |
+              <span className={styles.item__content__desc__delete} onClick={() => handleDeleteFromCart()}>
+                Delete
+              </span>
             </div>
           </div>
         </div>

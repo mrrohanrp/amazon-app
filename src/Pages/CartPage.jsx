@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { CartItem } from '../components';
@@ -6,29 +7,25 @@ import { CartItem } from '../components';
 import styles from './CartPage.module.scss';
 
 const CartPage = () => {
-  let cart = {
-    B09JQZ3Y7V: {
-      id: 'B09JQZ3Y7V',
-      title:
-        'Apple MacBook Pro (14-inch/35.97 cm, Apple M1 Pro chip with 8‑core CPU and 14‑core GPU, 16GB RAM, 512GB SSD) - Silver',
-      price: 193900,
-      mrp: 194900,
-      image: '../assets/img/products/61cCf94xIEL._SX679_.jpg',
-      rating: 4.5,
-      ratingCount: 55,
-      quantity: 1
-    }
-  };
+  const cart = useSelector((state) => state.cart.cart);
 
   let items = [];
-  let i = 0;
   let totalPrice = 0;
   let totalItems = 0;
   for (const item in cart) {
-    const e = cart[item];
-    totalItems += e.quantity;
-    totalPrice += e.price * e.quantity;
-    items.push(<CartItem key={i++} id={e.id} price={e.price} title={e.title} image={e.image} quantity={e.quantity} />);
+    const product = cart[item];
+    totalItems += product.quantity;
+    totalPrice += product.price * product.quantity;
+    items.push(
+      <CartItem
+        key={product.id}
+        id={product.id}
+        price={product.price}
+        title={product.title}
+        image={product.image}
+        quantity={product.quantity}
+      />
+    );
   }
 
   return (
