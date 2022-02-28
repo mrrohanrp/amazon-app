@@ -52,6 +52,11 @@ $img-carousel-sprite: 'src/assets/img/carousel-sprite.png';
     white-space: nowrap;
     transition: ease 1000ms;
     display: block;
+    min-height: 400px;
+
+    @media (max-width: 768px) {
+      min-height: 200px;
+    }
   }
 
   &__slide {
