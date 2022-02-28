@@ -1,9 +1,31 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 
 import styles from './LoginPage.module.scss';
 
 const LoginPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((response) => {
+        console.log(response);
+
+        navigate('/');
+      })
+      .catch((error) => {
+        console.log(error.code);
+        alert(error.message);
+      });
+  };
+
   return (
     <div className={styles.login}>
       <div className={styles.login__logo}>
@@ -17,10 +39,28 @@ const LoginPage = () => {
         <h2>Sign-In</h2>
 
         <label htmlFor="email">Email</label>
-        <input type="email" name="email" id="email" required className={styles.login__login__email} />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          required
+          className={styles.login__login__email}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
         <label htmlFor="password">Password</label>
-        <input type="password" name="password" id="password" required className={styles.login__login__password} />
-        <button type="submit">Continue</button>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          required
+          className={styles.login__login__password}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit" onClick={(e) => handleLogin(e)}>
+          Continue
+        </button>
         <p>
           By continuing, you agree to Amazon&apos;s <Link to="/">Conditions of Use </Link> and{' '}
           <Link to="/">Privacy Notice</Link>.

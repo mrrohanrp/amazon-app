@@ -1,9 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 
 import styles from './SignUpPage.module.scss';
 
 const SignUpPage = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((response) => {
+        console.log(response);
+
+        navigate('/');
+      })
+      .catch((error) => {
+        console.log(error.code);
+        alert(error.message);
+      });
+  };
+
   return (
     <div className={styles.signup}>
       <div className={styles.signup__logo}>
@@ -16,9 +39,25 @@ const SignUpPage = () => {
       <div className={styles.signup__signup}>
         <h2>Create account</h2>
         <label htmlFor="name">Your name</label>
-        <input type="text" name="name" id="name" className={styles.signup__signup__email} required />
+        <input
+          type="text"
+          name="name"
+          id="name"
+          className={styles.signup__signup__email}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
         <label htmlFor="email">Email</label>
-        <input type="email" name="email" id="email" className={styles.signup__signup__email} required />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          className={styles.signup__signup__email}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
         <label htmlFor="password">Password</label>
         <input
           type="password"
@@ -26,6 +65,8 @@ const SignUpPage = () => {
           id="password"
           className={styles.signup__signup__password}
           placeholder="At least 6 characters"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
         <span>
@@ -34,7 +75,9 @@ const SignUpPage = () => {
         </span>
         <label htmlFor="password__again">Password again</label>
         <input type="password" name="password__again" id="password__again" required />
-        <button type="submit">Continue</button>
+        <button type="submit" onClick={(e) => handleSignUp(e)}>
+          Continue
+        </button>
         <p>
           By creating an account or logging in, you agree to Amazon&apos;s <Link to="/">Conditions of Use </Link> and{' '}
           <Link to="/">Privacy Notice</Link>.
