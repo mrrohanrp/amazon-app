@@ -1,0 +1,71 @@
+@import 'src/styles/constants/imgs';
+
+$class-name: 'nomatch';
+$font-size: 1.3rem;
+
+.#{$class-name} {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px;
+  margin: 0 auto;
+  padding: 14px 18px;
+  height: 100vh;
+  background-color: #fff;
+
+  &__container {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    & > img {
+      background-image: url($img-question);
+      width: 40px;
+      height: 35px;
+      border: 0 !important;
+      padding: 17px;
+    }
+  }
+
+  &__content {
+    font-size: $font-size;
+
+    & h1 {
+      color: #e47911;
+      font-size: inherit;
+      margin-bottom: 5px;
+    }
+
+    & p {
+      font-size: inherit;
+    }
+
+    &__end {
+      display: flex;
+      align-items: center;
+      margin-top: 1.5rem;
+
+      & > img {
+        background-image: url($img-arrow);
+        width: 10px;
+        height: 9px;
+        border: 0 !important;
+        padding: 4px;
+      }
+
+      & h2 {
+        font-size: $font-size;
+      }
+
+      & h2 a {
+        font-size: $font-size;
+        color: #e47911;
+        text-decoration: underline;
+      }
+    }
+  }
+}
