@@ -1,0 +1,171 @@
+@import 'src/styles/constants/colors';
+@import 'src/styles/constants/imgs';
+@import 'src/styles/mixins/button';
+
+$class-name: 'login';
+$login-width: 25rem;
+
+.#{$class-name} {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px;
+  margin: 0 auto;
+  padding: 14px 18px;
+
+  &__logo {
+    position: relative;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    &__sprite {
+      display: flex;
+      padding: 1px 6px 6px;
+
+      &__base {
+        width: 103px;
+        height: 31px;
+        background: url($img-login-sprite) -5px -130px;
+        background-size: 400px 750px;
+      }
+
+      &__locale {
+        color: #000;
+        margin: 3px 0 0 3px;
+        font-size: 13.5px;
+      }
+    }
+  }
+
+  &__login {
+    background-color: #fff;
+    padding: 2rem;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: $login-width;
+    border: 0.1px solid rgb(182 180 180);
+    border-radius: 5px;
+
+    & h2 {
+      font-size: 2rem;
+      font-weight: 400;
+      padding-bottom: 1.5rem;
+    }
+
+    & label {
+      font-size: 0.9rem;
+      font-weight: bold;
+      margin-left: 3px;
+    }
+
+    & input {
+      margin-top: 0.2rem;
+      margin-bottom: 0.7rem;
+      height: 2.2rem;
+      border: 1px solid #a6a6a6;
+      border-top-color: #949494;
+      border-radius: 3px;
+      outline: none;
+      padding: 0 10px;
+
+      &:focus {
+        border-color: #e77600;
+        box-shadow: 0 0 3px 2px rgb(228 121 17 / 50%);
+      }
+    }
+
+    & button {
+      @include button('old');
+
+      height: 2.2rem;
+    }
+
+    & p {
+      margin: 0.5rem 0;
+      font-weight: lighter;
+      font-size: 0.86rem;
+    }
+
+    &__icon {
+      display: inline-block;
+      min-width: 7px;
+      height: 7px;
+      background: url($img-login-sprite) -366px -86px;
+      background-size: 400px 750px;
+    }
+  }
+
+  & a {
+    text-decoration: none;
+    color: #0066c0 !important;
+    font-size: 0.86rem;
+  }
+
+  &__break {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0 0;
+    color: #767676;
+
+    & p {
+      font-size: 0.86rem;
+      z-index: 2;
+      background-color: $bg-body;
+      padding: 0 8px;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: $login-width;
+      background: linear-gradient(to right, $bg-body, #767676, $bg-body);
+      position: absolute;
+      top: 50%;
+      margin-top: -1px;
+      z-index: 1;
+    }
+  }
+
+  &__create__account {
+    @include button('grey');
+
+    height: 2.2rem;
+    width: $login-width;
+  }
+
+  &__footer {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    background: linear-gradient(to bottom, rgb(0 0 0 / 14%), rgb(0 0 0 / 3%) 3px, transparent);
+
+    &__links {
+      display: flex;
+      justify-content: center;
+      margin: 0.4rem;
+
+      & a {
+        margin: 0.5rem;
+      }
+
+      & a p {
+        font-size: 0.86rem;
+      }
+    }
+
+    &__rights {
+      font-size: 0.86rem;
+      color: #767676;
+    }
+  }
+}

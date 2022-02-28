@@ -1,12 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { useInView } from 'react-intersection-observer';
 import classNames from 'classnames';
-import { useSelector } from 'react-redux';
+
+import { auth } from '../firebase';
+import { LOGOUT } from '../store/authSlice';
 
 const Header = () => {
   const cartCount = useSelector((state) => state.cart.cartCount);
+  const authUserName = useSelector((state) => state.auth.authUserName);
 
+  const dispatch = useDispatch();
+
+  /** header effect onscroll  */
   const [headerHeight, setHeaderHeight] = useState('auto');
 
   const headerRef = useRef();
@@ -18,6 +25,24 @@ const Header = () => {
   useEffect(() => {
     setHeaderHeight(headerRef.current.clientHeight);
   }, []);
+
+  /** display name on header and login/logout onclick  */
+  const handleLogin = () => {
+    auth.signOut();
+    dispatch(LOGOUT());
+  };
+
+  const login = authUserName ? (
+    <Link to="/" className="header__main__nav__options" onClick={handleLogin}>
+      <span className="header__main__nav__options__top">Hello, {authUserName}</span>
+      <span className="header__main__nav__options__bottom">Sign Out</span>
+    </Link>
+  ) : (
+    <Link to="/login" className="header__main__nav__options">
+      <span className="header__main__nav__options__top">Hello, User</span>
+      <span className="header__main__nav__options__bottom">Sign In</span>
+    </Link>
+  );
 
   return (
     <div className="header">
@@ -54,10 +79,7 @@ const Header = () => {
             </div>
           </div>
           <div className="header__main__nav">
-            <Link to="/login" className="header__main__nav__options">
-              <span className="header__main__nav__options__top">Hello, Rohan</span>
-              <span className="header__main__nav__options__bottom">Account & Lists</span>
-            </Link>
+            {login}
             <Link to="/" className="header__main__nav__options">
               <span className="header__main__nav__options__top">Returns </span>
               <span className="header__main__nav__options__bottom">& Orders</span>

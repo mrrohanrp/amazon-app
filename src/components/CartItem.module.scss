@@ -52,7 +52,7 @@ $class-name: 'item';
 
       &__add,
       &__subtract {
-        @include button;
+        @include button('grey');
 
         max-width: 2rem;
         margin: 5px;
