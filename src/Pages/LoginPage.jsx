@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 import { auth } from '../firebase';
+import { Logo } from '../components';
 
 import styles from './LoginPage.module.scss';
 
@@ -26,12 +27,7 @@ const LoginPage = () => {
 
   return (
     <div className={styles.login}>
-      <div className={styles.login__logo}>
-        <Link to="/" className={styles.login__logo__sprite}>
-          <span className={styles.login__logo__sprite__base} />
-          <span className={styles.login__logo__sprite__locale}>.in</span>
-        </Link>
-      </div>
+      <Logo />
 
       <div className={styles.login__login}>
         <h2>Sign-In</h2>

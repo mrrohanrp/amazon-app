@@ -1,0 +1,30 @@
+@import 'src/styles/constants/imgs';
+
+$class-name: 'logo';
+
+.#{$class-name} {
+  position: relative;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  &__sprite {
+    display: flex;
+    padding: 1px 6px 6px;
+
+    &__base {
+      width: 103px;
+      height: 31px;
+      background: url($img-login-sprite) -5px -130px;
+      background-size: 400px 750px;
+    }
+
+    &__locale {
+      color: #000;
+      margin: 3px 0 0 3px;
+      font-size: 13.5px;
+    }
+  }
+}

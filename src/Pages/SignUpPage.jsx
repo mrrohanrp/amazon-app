@@ -7,6 +7,7 @@ import { auth } from '../firebase';
 
 import styles from './SignUpPage.module.scss';
 import { LOGIN } from '../store/authSlice';
+import { Logo } from '../components';
 
 const SignUpPage = () => {
   const [name, setName] = useState('');
@@ -38,12 +39,7 @@ const SignUpPage = () => {
 
   return (
     <div className={styles.signup}>
-      <div className={styles.signup__logo}>
-        <Link to="/" className={styles.signup__logo__sprite}>
-          <span className={styles.signup__logo__sprite__base} />
-          <span className={styles.signup__logo__sprite__locale}>.in</span>
-        </Link>
-      </div>
+      <Logo />
 
       <div className={styles.signup__signup}>
         <h2>Create account</h2>
