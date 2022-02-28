@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+
 import { auth } from '../firebase';
 
 import styles from './LoginPage.module.scss';
@@ -15,13 +16,10 @@ const LoginPage = () => {
     e.preventDefault();
 
     signInWithEmailAndPassword(auth, email, password)
-      .then((response) => {
-        console.log(response);
-
+      .then(() => {
         navigate('/');
       })
       .catch((error) => {
-        console.log(error.code);
         alert(error.message);
       });
   };

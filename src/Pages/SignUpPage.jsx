@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+
 import { auth } from '../firebase';
 
 import styles from './SignUpPage.module.scss';
+import { LOGIN } from '../store/authSlice';
 
 const SignUpPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -16,13 +21,17 @@ const SignUpPage = () => {
     e.preventDefault();
 
     createUserWithEmailAndPassword(auth, email, password)
-      .then((response) => {
-        console.log(response);
-
-        navigate('/');
+      .then(() => {
+        updateProfile(auth.currentUser, {
+          displayName: name
+        })
+          .then(() => {
+            dispatch(LOGIN({ authUserEmail: email, authUserName: name }));
+            navigate('/');
+          })
+          .catch((error) => alert(error.message));
       })
       .catch((error) => {
-        console.log(error.code);
         alert(error.message);
       });
   };
